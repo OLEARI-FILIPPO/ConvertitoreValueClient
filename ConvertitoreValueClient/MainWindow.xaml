@@ -5,8 +5,113 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ConvertitoreValueClient"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow" Height="250" Width="600"
+        Background="Transparent" Loaded="Window_Loaded">
 
-    </Grid>
+
+
+    <Window.Resources>
+        <Style x:Key="Bottoni" TargetType="{x:Type Button}">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="10" Background="#149ad5">
+                            <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+    </Window.Resources>
+
+    <Border Background="White">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="73*" />
+                <ColumnDefinition Width="78*" />
+                <ColumnDefinition Width="74*" />
+                <ColumnDefinition Width="75*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="63*" />
+                <RowDefinition Height="113*" />
+                <RowDefinition Height="58*" />
+            </Grid.RowDefinitions>
+
+            <Label Content="Convertitore di valute" Grid.Row="0" 
+                   Grid.ColumnSpan="3" 
+                   FontSize="30"
+                   FontWeight="Bold" 
+                   HorizontalContentAlignment="Left" 
+                   VerticalContentAlignment="Center"/>
+
+            <TextBox x:Name="Importo" Grid.Row="1"
+                     Text="Importo"
+                     HorizontalAlignment="Stretch" 
+                     VerticalAlignment="Center" Margin="30,0,0,0"
+                     FontSize="20"/>
+
+            <ComboBox x:Name="DaValuta" Grid.Row="1" Grid.Column="1" 
+                      Margin="30,0,0,0" 
+                      VerticalAlignment="Center" Cursor="Hand"
+                      />
+            <StackPanel Grid.Row="1" 
+                        Grid.Column="2"
+                        VerticalAlignment="Center"
+                        Orientation="Horizontal">
+                
+                <Label Content="=" 
+                       Margin="20,0,0,0" 
+                       VerticalContentAlignment="Center"
+                       FontSize="20"/>
+                
+                <Label x:Name="Conversione" Content="Valore" 
+                       Margin="20,0,0,0" 
+                       VerticalContentAlignment="Center"
+                       FontSize="20"/>
+                
+            </StackPanel>
+
+            <ComboBox x:Name="AValuta" Grid.Row="1" Grid.Column="3" 
+                      Margin="15,0,15,0" 
+                      VerticalAlignment="Center" Cursor="Hand" />
+
+            <StackPanel Grid.Row="2"
+                        Grid.ColumnSpan="2"
+                        Orientation="Horizontal">
+                
+                
+                <Label Content="Tasso di cambio: "
+                   
+                   Margin="30,0,0,0" 
+                   VerticalContentAlignment="Center"
+                   FontSize="15"/>
+
+                <Label x:Name="ValoreTasso" Content="Valore tasso"
+                   VerticalContentAlignment="Center"
+                   FontSize="11"/>
+                
+            </StackPanel>
+
+            <Button Grid.Column="2"
+                    Content="Scambia Valute"
+                    Grid.Row="2"
+                    Margin="10"
+                    Style="{StaticResource Bottoni}" Click="Button_Click_1"/>
+
+            <Button Grid.Column="3"
+                    Content="Calcola"
+                    Grid.Row="2"
+                    Margin="10"
+                    Style="{StaticResource Bottoni}" Click="Button_Click"/>
+
+        </Grid>
+
+    </Border>
+
+
 </Window>
