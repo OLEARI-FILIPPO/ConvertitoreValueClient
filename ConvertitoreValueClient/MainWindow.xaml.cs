@@ -39,7 +39,7 @@ namespace ConvertitoreValueClient
             Valute.AddRange(serviceClient.getValute());
 
             ValoreTasso.Content = "1 " + da + " = " + 
-                                    Math.Round((double.Parse(Importo.Text) / valore), 1, MidpointRounding.ToEven) + " " + a;
+                                    Math.Round((double.Parse(Importo.Text) / valore), 4, MidpointRounding.ToEven) + " " + a;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -58,8 +58,16 @@ namespace ConvertitoreValueClient
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            
+            object box = DaValuta.SelectedItem;
+            DaValuta.SelectedItem = AValuta.SelectedItem;
+            AValuta.SelectedItem = box;
 
+            string cont = Importo.Text;
+            Importo.Text = Conversione.Content.ToString();
+            Conversione.Content = cont;
+
+
+            Button_Click(sender, e);
         }
     }
 }
