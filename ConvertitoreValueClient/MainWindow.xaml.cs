@@ -38,8 +38,8 @@ namespace ConvertitoreValueClient
             List<Valuta> Valute = new List<Valuta>();
             Valute.AddRange(serviceClient.getValute());
 
-            ValoreTasso.Content = " " + da + " = " + 
-                                    (double.Parse(Importo.Text) / valore) + " " + a;
+            ValoreTasso.Content = "1 " + da + " = " + 
+                                    Math.Round((double.Parse(Importo.Text) / valore), 1, MidpointRounding.ToEven) + " " + a;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
